@@ -9,5 +9,5 @@ export default defineConfig({
 	},
 
 	plugins: [react(), tsconfigPaths()],
-	base: '/appname/'
+	base: '/shaparak/'
 });
