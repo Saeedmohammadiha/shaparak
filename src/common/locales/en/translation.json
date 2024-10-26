@@ -1,3 +1,17 @@
 {
-	
+	"cardInformation": "Card Information",
+	"paymentInformation": "Payment Information",
+	"transactionReceipt": "Transaction Receipt",
+	"continue": "Continue",
+	"addCardOtherBanks": "Adding cards from other banks",
+	"amount": "Amount {{tail}}",
+	"rial": "(Rial)",
+	"description": "Description {{tail}}",
+	"optional": "(Optional)",
+	"originCardNumber": "Origin card number",
+	"destinationCardNumber": "Destination card number",
+	"registerCard": "Register Card",
+	"refuse": "Refuse",
+	"addCardModalText": "<p>According to the instructions of the Central Bank, in order to transfer money from other banks' cards, it is necessary to first register your card information in the Central Bank's system.</p><span>{{coloredText}}</span> In order to transfer money from the origin of the Bank of Agriculture card, refer to Smart Transfer.",
+	"attention": "Attention!"
 }

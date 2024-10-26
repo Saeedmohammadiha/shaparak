@@ -1,3 +1,17 @@
 {
-	
+	"cardInformation": "اطلاعات کارت",
+	"paymentInformation": "اطلاعات پرداخت",
+	"transactionReceipt": "رسید تراکنش",
+	"continue": "ادامه",
+	"addCardOtherBanks": "افزودن کارت سایر بانک ها",
+	"amount": "مبلغ {{tail}}",
+	"rial": "(ریال)",
+	"description": "توضیحات {{tail}}",
+	"optional": "(اختیاری)",
+	"originCardNumber": "شماره کارت مبدا",
+	"destinationCardNumber": "شماره کارت مقصد",
+	"registerCard": "ثبت کارت",
+	"refuse": "انصراف",
+	"addCardModalText": "<div>باتوجه به دستورالعمل بانک مرکزی جهت انتقال وجه از مبدا کارت های سایر بانک ها لازم است ابتدا اطلاعات کارت خود را در سامانه بانک مرکزی ثبت کنید</div><span>{{coloredText}}</span> جهت انتقال وجه از مبدا کارت بانک کشاورزی به انتقال هوشمند مراجعه کنید",
+	"attention": "توجه!"
 }
