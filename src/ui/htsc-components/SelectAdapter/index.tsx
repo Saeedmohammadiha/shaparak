@@ -143,7 +143,12 @@ export default function SelectAdapter(props: Props) {
 						dir: theme.direction,
 						sx: matches ? menuStyle : null,
 						PaperProps: {
-							style: { maxWidth: '200px', overflowX: 'auto', padding: !matches ? '0 8px' : 'inherit' }
+							style: {
+								maxWidth: '200px',
+								overflowX: 'auto',
+								cursor: 'pointer',
+								padding: !matches ? '0 8px' : 'inherit'
+							}
 						}
 					}}
 				>
