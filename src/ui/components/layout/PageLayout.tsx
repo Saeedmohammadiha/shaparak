@@ -1,5 +1,6 @@
 import { Grid, useTheme } from '@mui/material';
-import { ReactNode } from 'react';
+import { LoadingContext } from 'business/stores/shaparak/loadingContext';
+import { ReactNode, useContext } from 'react';
 import BoxAdapter from 'ui/htsc-components/BoxAdapter';
 import Loader from 'ui/htsc-components/loader/Loader';
 import Stepper from 'ui/htsc-components/Stepper';
@@ -7,14 +8,14 @@ import { StepperProps } from 'ui/htsc-components/Stepper/types';
 
 type Props = {
 	children: ReactNode;
-	buttons?: ReactNode | ReactNode[];
+	actions?: ReactNode | ReactNode[];
 	sidebar?: ReactNode;
-	isLoading?: boolean;
 	stepperProps?: StepperProps;
 };
 export default function PageLayout(props: Props) {
-	const { children, buttons, sidebar, isLoading = false, stepperProps } = props;
+	const { children, actions, sidebar, stepperProps } = props;
 	const theme = useTheme();
+	const { isLoading } = useContext(LoadingContext);
 
 	return (
 		<Grid
@@ -49,13 +50,13 @@ export default function PageLayout(props: Props) {
 							{children}
 						</Grid>
 
-						{buttons ? (
+						{actions ? (
 							<Grid
 								container
 								justifyContent={'space-between'}
 								//sx={{ marginTop: '16px' }}
 							>
-								{buttons}
+								{actions}
 							</Grid>
 						) : null}
 					</Grid>
