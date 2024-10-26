@@ -191,6 +191,26 @@ const MaterialThemeProvider = ({ children }: Props) => {
 						}
 					}
 				]
+			},
+			MuiSelect: {
+				styleOverrides: {
+					root: {
+						variants: [
+							{
+								props: { size: 'small' },
+								style: {
+									height: '40px'
+								}
+							},
+							{
+								props: { size: 'medium' },
+								style: {
+									height: '48px'
+								}
+							}
+						]
+					}
+				}
 			}
 		}
 	});
