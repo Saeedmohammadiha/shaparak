@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-type Props<TInput> = {
-	callback: (e: MessageEvent<TInput>) => void;
-	message?: TInput;
+type Props<TRequest, TResponse> = {
+	callback: (e: MessageEvent<TResponse>) => void;
+	message?: TRequest;
 };
-export default function usePostMessage<T>(props: Props<T>) {
+export default function usePostMessage<TRequest, TResponse>(props: Props<TRequest, TResponse>) {
 	const { callback, message } = props;
 	const hasSentAlready = useRef(false);
 
