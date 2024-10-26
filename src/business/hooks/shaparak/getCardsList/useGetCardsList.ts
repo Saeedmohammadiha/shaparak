@@ -1,16 +1,16 @@
 import { Mediator } from '@Mediatr/index';
 import { useQuery } from '@tanstack/react-query';
-import Query from 'business/application/shaparak/getCardsList/query';
+import GetCardsListQuery from 'business/application/shaparak/getCardsList/query';
 
 import { ErrorType } from 'common/entities/ErrorType';
-import { Response } from 'common/entities/httpDtos/getCardsList/response';
+import { GetCardsListResponse } from 'common/entities/httpDtos/getCardsList/response';
 
 const mediator = new Mediator();
 
 export function useGetCardsList() {
-	return useQuery<Response, ErrorType<object>, Response>({
+	return useQuery<GetCardsListResponse, ErrorType<object>, GetCardsListResponse>({
 		queryKey: ['cardsList'],
-		queryFn: () => mediator.send<Response>(new Query()),
+		queryFn: () => mediator.send<GetCardsListResponse>(new GetCardsListQuery()),
 		staleTime: 5 * 60 * 1000,
 		retry: false
 	});

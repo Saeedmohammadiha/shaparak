@@ -1,4 +1,4 @@
-export type Response = CardItem[];
+export type GetCardsListResponse = CardItem[];
 
 type CardItem = {
 	cardIndex: number;

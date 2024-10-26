@@ -1,13 +1,13 @@
 import { IRequestHandler, requestHandler } from '@Mediatr/index';
 import APIClient from 'business/infrastructure/api-client';
 import { getCardsList } from 'business/infrastructure/end-points';
-import { Response } from 'common/entities/httpDtos/getCardsList/response';
-import Query from './query';
+import { GetCardsListResponse } from 'common/entities/httpDtos/getCardsList/response';
+import GetCardsListQuery from './query';
 
-@requestHandler(Query)
-export class Handler implements IRequestHandler<Query, Response> {
-	handle(): Promise<Response> {
-		const apiClient = new APIClient<null, Response>(getCardsList);
+@requestHandler(GetCardsListQuery)
+export class GetCardsListHandler implements IRequestHandler<GetCardsListQuery, GetCardsListResponse> {
+	handle(): Promise<GetCardsListResponse> {
+		const apiClient = new APIClient<null, GetCardsListResponse>(getCardsList);
 		return apiClient.getAll({});
 	}
 }

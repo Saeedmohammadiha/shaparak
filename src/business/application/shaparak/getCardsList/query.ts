@@ -1,4 +1,4 @@
 import { IRequest } from '@Mediatr/index';
-import { Response } from 'common/entities/httpDtos/getCardsList/response';
+import { GetCardsListResponse } from 'common/entities/httpDtos/getCardsList/response';
 
-export default class Query implements IRequest<Response> {}
+export default class GetCardsListQuery implements IRequest<GetCardsListResponse> {}
