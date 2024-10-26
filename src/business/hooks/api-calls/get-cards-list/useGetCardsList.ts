@@ -1,9 +1,9 @@
 import { Mediator } from '@Mediatr/index';
 import { useQuery } from '@tanstack/react-query';
-import GetCardsListQuery from 'business/application/shaparak/getCardsList/query';
+import GetCardsListQuery from 'business/application/shaparak/get-cards-list/query';
 
 import { ErrorType } from 'common/entities/ErrorType';
-import { GetCardsListResponse } from 'common/entities/httpDtos/getCardsList/response';
+import { GetCardsListResponse } from 'common/entities/http-dtos/get-cards-list/response';
 
 const mediator = new Mediator();
 

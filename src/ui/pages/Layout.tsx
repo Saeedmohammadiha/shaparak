@@ -1,4 +1,4 @@
-import { useInitConfig } from 'business/hooks/initConfig/useInitConfig';
+import { useInitConfig } from 'business/hooks/init-config/useInitConfig';
 import { Outlet } from 'react-router-dom';
 import AppAlerts from 'ui/htsc-components/alerts/AppAlerts';
 import Loader from 'ui/htsc-components/loader/Loader';

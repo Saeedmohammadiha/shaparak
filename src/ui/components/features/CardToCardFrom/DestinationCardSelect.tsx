@@ -1,5 +1,5 @@
 import { MenuItem } from '@mui/material';
-import { useGetDestinationCards } from 'business/hooks/shaparak/getDestinationCards/useGetDestinationCards';
+import { useGetDestinationCards } from 'business/hooks/api-calls/get-destination-cards/useGetDestinationCards';
 import { LoadingContext } from 'business/stores/shaparak/loadingContext';
 import { useContext, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
