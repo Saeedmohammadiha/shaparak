@@ -21,14 +21,14 @@ export default function AppAlerts() {
 		}
 	}, [alerts]);
 
-	const clearAlers = () => {
+	const clearAlerts = () => {
 		clearAlert();
 		setLocalAlerts([]);
 	};
 
 	const handleClose = () => {
 		setOpen(false);
-		clearAlers();
+		clearAlerts();
 		capturedAlert?.actions?.onCloseModal?.();
 	};
 
@@ -61,24 +61,28 @@ export default function AppAlerts() {
 			</DialogTitle>
 
 			<DialogContent sx={{ margin: 'auto' }}>
-				<Typography
-					variant="bodySm"
-					sx={{ textAlign: 'center' }}
-				>
-					{capturedAlert.messageText ? t(capturedAlert.messageText, capturedAlert.messageText) : ''}
-				</Typography>
+				{typeof capturedAlert.messageText === 'string' ? (
+					<Typography
+						variant="bodySm"
+						sx={{ textAlign: 'center' }}
+					>
+						{capturedAlert.messageText}
+					</Typography>
+				) : (
+					capturedAlert?.messageText
+				)}
 			</DialogContent>
 
 			<DialogActions sx={{ justifyContent: 'center' }}>
 				{capturedAlert.overrideActions ? (
-					capturedAlert.overrideActions
+					capturedAlert.overrideActions({ open, setOpen, clearAlerts })
 				) : (
 					<>
 						{capturedAlert?.hasConfirmAction ? (
 							<ButtonAdapter
 								onClick={() => {
 									setOpen(false);
-									clearAlers();
+									clearAlerts();
 									capturedAlert?.actions?.onConfirm?.();
 								}}
 								variant={'contained'}
@@ -90,7 +94,7 @@ export default function AppAlerts() {
 							<ButtonAdapter
 								onClick={() => {
 									setOpen(false);
-									clearAlers();
+									clearAlerts();
 									capturedAlert.actions?.onContinue?.();
 								}}
 								variant={'contained'}
@@ -102,7 +106,7 @@ export default function AppAlerts() {
 							<ButtonAdapter
 								onClick={() => {
 									setOpen(false);
-									clearAlers();
+									clearAlerts();
 									capturedAlert.actions?.onRefuse?.();
 								}}
 								variant={'outlined'}
