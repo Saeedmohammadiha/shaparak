@@ -9,7 +9,7 @@ const mediator = new Mediator();
 
 export function useGetCardsList() {
 	return useQuery<GetCardsListResponse, ErrorType<object>, GetCardsListResponse>({
-		queryKey: ['cardsList'],
+		queryKey: ['cards-list'],
 		queryFn: () => mediator.send<GetCardsListResponse>(new GetCardsListQuery()),
 		staleTime: 5 * 60 * 1000,
 		retry: false
