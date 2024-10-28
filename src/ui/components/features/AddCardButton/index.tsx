@@ -20,7 +20,7 @@ export default function AddCardButton() {
 
 	return (
 		<ButtonAdapter
-			onClick={() => handleAddCard()}
+			onClick={handleAddCard}
 			variant="outlined"
 			muiButtonProps={{
 				sx: {
