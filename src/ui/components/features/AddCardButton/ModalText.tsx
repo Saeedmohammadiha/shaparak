@@ -13,7 +13,7 @@ export default function ModalText() {
 			<Trans
 				i18nKey={'addCardModalText'}
 				values={{ coloredText: t('attention') }}
-				components={{ span: <span style={{ color: theme.palette.primary.main }} /> }}
+				components={{ span: <span style={{ color: theme.palette.primary.main }} />, dd: <dd /> }}
 			/>
 		</Typography>
 	);
