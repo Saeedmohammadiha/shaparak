@@ -33,7 +33,8 @@ export function useInitConfig() {
 			setSettings({
 				theme: theme,
 				themeName: themeName,
-				language: language as 'fa-IR' | 'en-GB'
+				language: language as 'fa-IR' | 'en-GB',
+				shaparakBaseUrl: apiConf.shaparakBaseUrl
 			});
 
 			seConfigReady(true);
