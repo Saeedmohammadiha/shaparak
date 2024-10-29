@@ -1,9 +1,9 @@
 import { Grid, useTheme } from '@mui/material';
-import { LoadingContext } from 'business/stores/shaparak/loadingContext';
-import { ReactNode, useContext } from 'react';
+import { useLoading } from 'business/stores/shaparak/loadingStore';
+import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import BoxAdapter from 'ui/htsc-components/BoxAdapter';
 import Loader from 'ui/htsc-components/loader/Loader';
-import Stepper from 'ui/htsc-components/Stepper';
 import { StepperProps } from 'ui/htsc-components/Stepper/types';
 
 type Props = {
@@ -12,10 +12,10 @@ type Props = {
 	sidebar?: ReactNode;
 	stepperProps?: StepperProps;
 };
-export default function PageLayout(props: Props) {
-	const { children, actions, sidebar, stepperProps } = props;
+export default function PageLayout() {
+	//const { children, actions, sidebar } = props;
 	const theme = useTheme();
-	const { isLoading } = useContext(LoadingContext);
+console.log("layy");
 
 	return (
 		<Grid
@@ -28,7 +28,8 @@ export default function PageLayout(props: Props) {
 			<Grid
 				item
 				xs={12}
-				md={sidebar ? 8 : 12}
+				//	md={sidebar ? 8 : 12}
+				md={12}
 			>
 				<BoxAdapter fullWidthBreakpoint={'md'}>
 					<Grid
@@ -41,13 +42,13 @@ export default function PageLayout(props: Props) {
 						justifyContent={'space-between'}
 						wrap="nowrap"
 					>
-						<Grid
+						{/* <Grid
 							container
 							direction={'column'}
 						>
-							{stepperProps ? <Stepper {...stepperProps} /> : null}
+							{/* {stepperProps ? <Stepper {...stepperProps} /> : null} */}
 
-							{children}
+						{/* {children}
 						</Grid>
 
 						{actions ? (
@@ -58,26 +59,33 @@ export default function PageLayout(props: Props) {
 							>
 								{actions}
 							</Grid>
-						) : null}
+						) : null */}
+						<Outlet />
 					</Grid>
 				</BoxAdapter>
 			</Grid>
 
-			{sidebar ? (
-				<Grid
-					item
-					md={3}
-					dir={theme.direction}
-					sx={{
-						display: {
-							sm: theme.breakpoints.down('md')
-						}
-					}}
-				>
-					{sidebar}
-				</Grid>
-			) : null}
-			<Loader showLoader={isLoading} />
+			{/* // sidebar ? (
+			// 	<Grid
+			// 		item
+			// 		md={3}
+			// 		dir={theme.direction}
+			// 		sx={{
+			// 			display: {
+			// 				sm: theme.breakpoints.down('md')
+			// 			}
+			// 		}}
+			// 	>
+			// 		{sidebar}
+			// 	</Grid>
+			// ) : null} */}
+			{/* <Loader showLoader={isLoading} /> */}
+			<LoaderSwitch />
 		</Grid>
 	);
+}
+
+export function LoaderSwitch() {
+	const loading = useLoading((state) => state.loading);
+	return <Loader showLoader={loading} />;
 }
