@@ -1,32 +1,31 @@
+import validator from '@Fluentvalidator/extentions/fluentValidationResolver';
 import { Grid } from '@mui/material';
-import LoadingProvider from 'business/stores/shaparak/loadingContext';
-import { useTranslation } from 'react-i18next';
+import { InquiryDestinationCommand } from 'business/application/shaparak/inquiry-destination-holder/command';
+import { FormProvider, useForm } from 'react-hook-form';
 import AddCardButton from 'ui/components/features/AddCardButton';
 import CardToCardFrom from 'ui/components/features/CardToCardFrom';
-import PageLayout from 'ui/components/layout/PageLayout';
-import SubmitButton from './SubmitButton';
+import SubmitButton from '../../components/home-page-comps/SubmitButton';
 
 export default function Home() {
-	const { t } = useTranslation();
+	const methods = useForm<InquiryDestinationCommand>({
+		resolver: (values, context, options) => {
+			return validator(values, context, options);
+		},
+		context: InquiryDestinationCommand
+	});
 
 	return (
-		<LoadingProvider>
-			<PageLayout
-				stepperProps={{
-					list: [t('cardInformation'), t('paymentInformation'), t('transactionReceipt')],
-					active: 0
-				}}
-				actions={<SubmitButton />}
+		<FormProvider {...methods}>
+			<Grid
+				marginTop={50}
+				container
+				direction={'column'}
+				gap={16}
 			>
-				<Grid
-					container
-					direction={'column'}
-					gap={16}
-				>
-					<AddCardButton />
-					<CardToCardFrom />
-				</Grid>
-			</PageLayout>
-		</LoadingProvider>
+				<AddCardButton />
+				<CardToCardFrom />
+			</Grid>
+			<SubmitButton />
+		</FormProvider>
 	);
 }
