@@ -5,10 +5,12 @@ export class InquiryDestinationCommand implements IRequest<InquiryDestinationRes
 	cardIndex: number;
 	destinationCardNo: number;
 	amount: number;
+	description: string;
 
 	constructor(input: InquiryDestinationCommand) {
 		this.cardIndex = input.cardIndex;
 		this.destinationCardNo = input.destinationCardNo;
 		this.amount = input.amount;
+		this.description = input.description;
 	}
 }

@@ -1,6 +1,6 @@
-import validator from '@Fluentvalidator/extentions/fluentValidationResolver';
 import { Grid } from '@mui/material';
-import { FormProvider, useForm } from 'react-hook-form';
+import { InquiryDestinationCommand } from 'main';
+import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { ControlledInput } from 'ui/htsc-components/ControlledInput/ControlledInput';
 import { ControlledTextArea } from 'ui/htsc-components/ControlledInput/ControlledTextArea';
@@ -9,44 +9,34 @@ import OriginCardsSelect from './OriginCardsSelect';
 
 export default function CardToCardFrom() {
 	const { t } = useTranslation();
-
-	// const methods = useForm<CheckInfoFormValidatorCommand>({
-	// 	resolver: (values, context, options) => {
-	// 		return validator(values, context, options);
-	// 	},
-	// 	context: CheckInfoFormValidatorCommand
-	// });
-
-	const methods = useForm({
-		resolver: (values, context, options) => {
-			return validator(values, context, options);
-		}
-	});
+	const { control, formState } = useFormContext<InquiryDestinationCommand>();
 
 	return (
-		<FormProvider {...methods}>
-			<Grid
-				container
-				direction={'column'}
-				gap={16}
-			>
-				<OriginCardsSelect />
-				<DestinationCardSelect />
+		<Grid
+			container
+			direction={'column'}
+			gap={16}
+		>
+			<OriginCardsSelect />
+			<DestinationCardSelect />
 
-				<ControlledInput
-					control={methods.control}
-					name="amount"
-					label={t('amount', { tail: t('rial') })}
-					type="number"
-					onChange={() => {}}
-				/>
-				<ControlledTextArea
-					control={methods.control}
-					name="description"
-					onChange={() => {}}
-					label={t('description', { tail: t('optional') })}
-				/>
-			</Grid>
-		</FormProvider>
+			<ControlledInput
+				control={control}
+				name="amount"
+				label={t('amount', { tail: t('rial') })}
+				type="money"
+				onChange={() => {}}
+				error={!!formState.errors.amount?.message}
+				helperText={formState.errors.amount?.message}
+			/>
+			<ControlledTextArea
+				control={control}
+				name="description"
+				onChange={() => {}}
+				label={t('description', { tail: t('optional') })}
+				error={!!formState.errors.description?.message}
+				helperText={formState.errors.description?.message}
+			/>
+		</Grid>
 	);
 }
