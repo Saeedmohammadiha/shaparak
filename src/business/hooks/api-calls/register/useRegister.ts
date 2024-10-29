@@ -1,5 +1,5 @@
 import { Mediator } from '@Mediatr/index';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { RegisterCommand } from 'business/application/shaparak/register/command';
 import { pushAlert } from 'business/stores/AppAlertsStore';
 
@@ -16,6 +16,8 @@ type Props = {
 };
 
 export function useRegister({ setOpen, clearAlerts }: Props) {
+	const queryClient = useQueryClient();
+
 	const closeModal = () => {
 		setOpen(false);
 		clearAlerts();
@@ -24,11 +26,11 @@ export function useRegister({ setOpen, clearAlerts }: Props) {
 	return useMutation<RegisterResponse, ErrorType<object>>({
 		mutationFn: () => mediator.send<RegisterResponse>(new RegisterCommand()),
 		mutationKey: ['register'],
-		cacheTime: 10 * 60 * 1000,
 		onMutate: (variables) => {
 			return () => variables;
 		},
 		onSuccess: (res) => {
+			queryClient.setQueryData(['register'], (_oldData: RegisterResponse | undefined) => res);
 			closeModal();
 			const url = res.registrationAddress.replace('tsm.shaparak.ir', '10.42.7.39');
 			window.open(url, '_blank');

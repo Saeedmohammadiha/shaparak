@@ -13,7 +13,6 @@ export function useConfirm() {
 		mutationFn: (data: ConfirmRegisterCommand) =>
 			mediator.send<ConfirmRegisterResponse>(new ConfirmRegisterCommand(data)),
 		mutationKey: ['confirm-register'],
-		cacheTime: 0,
 		onMutate: (variables) => {
 			return () => variables;
 		},
