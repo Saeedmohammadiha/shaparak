@@ -1,4 +1,6 @@
 import { Grid } from '@mui/material';
+import { useRegister } from 'business/hooks/api-calls/register/useRegister';
+import { useLoadingHandler } from 'business/stores/shaparak/loadingStore';
 import { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import ButtonAdapter from 'ui/htsc-components/ButtonAdapter';
@@ -11,23 +13,33 @@ type Props = {
 
 export default function ModalActions({ setOpen, clearAlerts }: Props) {
 	const { t } = useTranslation();
+	const { isLoading, mutate } = useRegister({ setOpen, clearAlerts });
+	useLoadingHandler(isLoading);
+
+	const closeModal = () => {
+		setOpen(false);
+		clearAlerts();
+	};
+
+	const handleAddCard = () => {
+		mutate();
+	};
 
 	return (
-		<Grid>
+		<Grid
+			container
+			direction={'column'}
+			justifyContent={'center'}
+			gap={16}
+		>
 			<ButtonAdapter
-				onClick={() => {
-					setOpen(false);
-					clearAlerts();
-				}}
+				onClick={handleAddCard}
 				variant={'contained'}
 			>
 				{t('registerCard')}
 			</ButtonAdapter>
 			<ButtonAdapter
-				onClick={() => {
-					setOpen(false);
-					clearAlerts();
-				}}
+				onClick={closeModal}
 				variant={'outlined'}
 			>
 				{t('refuse')}
