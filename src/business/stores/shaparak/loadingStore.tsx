@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { create } from 'zustand';
 
@@ -10,7 +9,6 @@ interface LoadingState {
 export const useLoading = create<LoadingState>((set) => ({
 	loading: false,
 	setLoading: (isLoading: boolean) => {
-		console.log('from handler');
 		set((store) => {
 			return { ...store, loading: isLoading };
 		});
