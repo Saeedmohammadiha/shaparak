@@ -1,3 +1,6 @@
 export const paths = {
-	Home: '/shaparak'
+	Home: '/',
+	layout: '',
+	Overview: 'overview',
+	Receipt: 'receipt'
 };
