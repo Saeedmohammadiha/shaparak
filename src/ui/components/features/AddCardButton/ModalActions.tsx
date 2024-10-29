@@ -13,7 +13,7 @@ type Props = {
 
 export default function ModalActions({ setOpen, clearAlerts }: Props) {
 	const { t } = useTranslation();
-	const { isLoading, mutate } = useRegister({ setOpen, clearAlerts });
+	const { isLoading, mutate } = useRegister();
 	useLoadingHandler(isLoading);
 
 	const closeModal = () => {
@@ -22,7 +22,10 @@ export default function ModalActions({ setOpen, clearAlerts }: Props) {
 	};
 
 	const handleAddCard = () => {
-		mutate();
+		mutate(undefined, {
+			onSuccess: closeModal,
+			onError: closeModal
+		});
 	};
 
 	return (
