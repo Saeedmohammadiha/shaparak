@@ -18,3 +18,4 @@ export * from './shaparak/confirm-registeration-card/handler';
 
 export * from './shaparak/inquiry-destination-holder/command';
 export * from './shaparak/inquiry-destination-holder/handler';
+export * from './shaparak/inquiry-destination-holder/validation';
